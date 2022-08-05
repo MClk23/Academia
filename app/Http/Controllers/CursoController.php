@@ -61,7 +61,10 @@ class CursoController extends Controller
      */
     public function show($id)
     {
-        return view('cursos.show');
+        //return 'El id de este curso es: ' . $id;
+        //return view('cursos.show');
+        $cursito = Curso::find($id);
+        return view('cursos.show', compact('cursito'));
     }
 
     /**
@@ -72,7 +75,12 @@ class CursoController extends Controller
      */
     public function edit($id)
     {
-        return view('cursos.edit');
+        $cursito = Curso::find($id);
+        return view('cursos.edit', compact('cursito'));
+        //return 'El id del curso que desa actualizar es: ' . $id;
+        //return ' La información que usted quiere actualizar, se veria así en formato array' . $cursito;
+
+        //return view('cursos.edit');
     }
 
     /**
@@ -84,7 +92,15 @@ class CursoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $cursito = Curso::find($id);
+        //return $request;
+        //$cursito->fill($request->all()); //llenar la tabla con el request.
+        $cursito->fill($request->except('imagen'));
+        if ($request->hasFile('imagen')){
+            $cursito->imagen = $request->file('imagen')->store('public/cursos');
+        }
+        $cursito->save();
+        return 'La actualización fue exitosa';
     }
 
     /**
