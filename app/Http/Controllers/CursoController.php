@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\storeCursoRequest;
 use App\Models\Curso;
 use Illuminate\Http\Request;
+
 
 class CursoController extends Controller
 {
@@ -37,8 +39,19 @@ class CursoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(storeCursoRequest $request)
     {
+        /*
+        //implementamos validaciones
+        $validacionDatos = $request->validate([
+            'nombre' =>'required|max:10',
+            'imagen'=>'required|image'
+        ]);
+        */
+
+        if($request->hasFile('imagen')){
+            $archivo = $request->file('imagen');
+        }
         //Se devuelve la peticion hecha al servidor
         //return $request->all();
         $cursito = new Curso();//Lo que hicimos fue crear una instancia de la clase Curso
@@ -111,6 +124,14 @@ class CursoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $cursito = Curso::find($id);
+        $urlImagenBD = $cursito->imagen;
+        //return $urlImagenBD;
+        $nombreImagen = str_replace('public/','\storage\\', $urlImagenBD);
+        $rutaCompleta = public_path().$nombreImagen;
+        //return $rutaCompleta;
+        unlink($rutaCompleta);
+        $cursito ->delete();
+        return 'Eliminado';
     }
 }
