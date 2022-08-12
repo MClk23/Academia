@@ -7,6 +7,7 @@
 <form action="/cursos/{{$cursito->id}}" method="POST" enctype="multipart/form-data">
     @method('PUT')
     @csrf
+    
     <br>
         <h2>Formulario de Edición del curso</h2>
         <div class="form-group">

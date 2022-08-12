@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\storeDocenteRequest;
+use App\Models\Docente;
 use Illuminate\Http\Request;
 
 class DocenteController extends Controller
@@ -13,7 +15,8 @@ class DocenteController extends Controller
      */
     public function index()
     {
-        //
+        $docentico = Docente::all();
+        return view('docentes.index' , compact('docentico'));
     }
 
     /**
@@ -23,7 +26,7 @@ class DocenteController extends Controller
      */
     public function create()
     {
-        //
+        return view ('docentes.create');
     }
 
     /**
@@ -32,11 +35,22 @@ class DocenteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(storeDocenteRequest $request)
     {
-        //
-    }
+        $docentico = new Docente();
+        $docentico->nombre = $request->input('nombre');
+        $docentico->apellido = $request->input('apellido');
+        $docentico->titulouniv = $request->input('titulouniv');
+        $docentico->edad = $request->input('edad');
+        $docentico->fecha = $request->input('fecha');
+        if($request->hasFile('imagen','documento')){
+            $docentico->imagen = $request->file('imagen')->store('public/docentes');
+            $docentico->documento = $request->file('documento')->store('public/docentes');
+        }
+        $docentico->save();
+        return 'guardado';
 
+    }
     /**
      * Display the specified resource.
      *
@@ -45,7 +59,8 @@ class DocenteController extends Controller
      */
     public function show($id)
     {
-        //
+        $docentico = Docente::find($id);
+        return view('docentes.show', compact('docentico'));
     }
 
     /**
@@ -56,7 +71,8 @@ class DocenteController extends Controller
      */
     public function edit($id)
     {
-        //
+        $docentico = Docente::find($id);
+        return view('docentes.edit', compact('docentico'));
     }
 
     /**
@@ -68,7 +84,14 @@ class DocenteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $docentico = Docente::find($id);
+        $docentico->fill($request->except('imagen'));
+        if($request->hasFile('imagen')){
+            $docentico->imagen = $request->file('imagen')->store('public/docentes');
+            $docentico->documento = $request->file('documento')->store('public/docentes');
+        }
+        $docentico->save();
+        return view('docentes.edit');
     }
 
     /**
@@ -79,6 +102,12 @@ class DocenteController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $docentico = Docente::find($id);
+        $urlImagenBD = $docentico->imagen;
+        $nombreImagen = str_replace('public/', '\storage\\', $urlImagenBD);
+        $rutaCompleta = public_path(). $nombreImagen;
+        unlink($rutaCompleta);
+        $docentico -> delete();
+        return view('docentes.delete');
     }
 }
