@@ -4,7 +4,8 @@
 
 @section('contenido')
 
-    <form action="/docentes" method="POST" enctype="multipart/form-data">
+    <form action="/docentes/{{$docentico->id}}" method="POST" enctype="multipart/form-data">
+    @method('PUT')
     @csrf
     <br>
         <h2>Actualizar información del docente</h2>

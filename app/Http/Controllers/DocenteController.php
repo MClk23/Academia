@@ -48,7 +48,7 @@ class DocenteController extends Controller
             $docentico->documento = $request->file('documento')->store('public/docentes');
         }
         $docentico->save();
-        return 'guardado';
+        return view('docentes.guardado');
 
     }
     /**
@@ -85,13 +85,13 @@ class DocenteController extends Controller
     public function update(Request $request, $id)
     {
         $docentico = Docente::find($id);
-        $docentico->fill($request->except('imagen'));
-        if($request->hasFile('imagen')){
+        $docentico->fill($request->except(['imagen', 'documento']));
+        if($request->hasFile('imagen','documento')){
             $docentico->imagen = $request->file('imagen')->store('public/docentes');
             $docentico->documento = $request->file('documento')->store('public/docentes');
         }
         $docentico->save();
-        return view('docentes.edit');
+        return view('docentes.editado');
     }
 
     /**

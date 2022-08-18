@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
-@section('titulo', 'ELiminado')
+@section('titulo', 'Editado')
 
 @section('contenido')
 
 <div class="alert alert-success" role="alert">
-    Eliminado Exitosamente
+    Editado exitosamente
 </div>
 
 @endsection
