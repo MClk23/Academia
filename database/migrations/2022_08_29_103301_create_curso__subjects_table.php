@@ -13,10 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('docentes', function (Blueprint $table) {
+        Schema::create('curso__subjects', function (Blueprint $table) {
+            $table->unsignedBigInteger('curso_id');
+            $table->unsignedBigInteger('subject_id');
+            $table->timestamps();
 
-
-
+    
         });
     }
 
@@ -27,8 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('docentes', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('curso__subjects');
     }
 };

@@ -7,6 +7,11 @@ use App\Http\Controllers\HeladeriaController;
 use App\Http\Controllers\ControladorPrecios;
 use App\Http\Controllers\CursoController;
 use App\Http\Controllers\DocenteController;
+use App\Http\Controllers\StudentController;
+use App\Http\Controllers\SubjectController;
+use App\Http\Controllers\CountryController;
+use App\Http\Controllers\StatesController;
+use App\Http\Controllers\TownController;
 
 
 /*
@@ -53,4 +58,12 @@ Route::resource('cursos', CursoController::class);
 
 Route::resource('docentes', DocenteController::class);
 
+Route::resource('student', StudentController::class);
 
+Route::resource('subject', SubjectController::class);
+
+Route::resource('country', CountryController::class);
+
+Route::resource('state', StatesController::class);
+
+Route::resource('town', TownController::class);

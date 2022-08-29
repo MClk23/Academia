@@ -13,10 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('docentes', function (Blueprint $table) {
-
-
-
+        Schema::create('states', function (Blueprint $table) {
+            $table->id();
+            $table->timestamps();
+            $table->string('nombre');
+            $table->unsignedBigInteger('id_pais');
+            $table->foreign('id_pais')->references('id')->on('countries')->onDelete('cascade')->onUpdate('cascade');;
         });
     }
 
@@ -27,8 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('docentes', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('states');
     }
 };
