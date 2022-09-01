@@ -22,25 +22,21 @@ return new class extends Migration
             $table->integer('numdoc');
             $table->text('docident');
             $table->date('fecexp');
-            $table->string('exppais');
-            $table->string('expdepa');
-            $table->unsignedBigInteger('expmuni');
+            $table->unsignedBigInteger('id_expmuni');
             $table->string('nombres');
             $table->string('priapelli');
             $table->string('segapellido');
             $table->enum('genero',['M','F','otros']);
             $table->date('fecnacimiento');
-            $table->string('paisnac');
-            $table->string('depanac');
-            $table->string('muninac');
             $table->integer('estrato');
             $table->unsignedBigInteger('id_cursos');
             $table->unsignedBigInteger('id_muni_nac');
 
             //llaves
-            $table->foreign('expmuni')->references('id')->on('towns')->onDelete('cascade')->onUpdate('cascade');;
+            $table->foreign('id_expmuni')->references('id')->on('towns')->onDelete('cascade')->onUpdate('cascade');;
             $table->foreign('id_cursos')->references('id')->on('cursos')->onDelete('cascade')->onUpdate('cascade');;
             $table->foreign('id_muni_nac')->references('id')->on('towns')->onDelete('cascade')->onUpdate('cascade');;
+
         });
     }
 

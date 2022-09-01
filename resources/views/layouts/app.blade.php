@@ -28,6 +28,12 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="/docentes">Listado Docentes <span class="sr-only">(current)</span></a>
                     </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/student/create">Crear Estudiante <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/student">Listado Estudiantes<span class="sr-only">(current)</span></a>
+                    </li>
                 </ul>
             </div>
         </nav>

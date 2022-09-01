@@ -17,7 +17,9 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('nombre');
-            $table->integer('iddepa');
+            $table->unsignedBigInteger('id_depa');
+
+            $table->foreign('id_depa')->references('id')->on('states')->onDelete('cascade')->onUpdate('cascade');;
         });
     }
 

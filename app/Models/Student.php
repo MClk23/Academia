@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Student extends Model
 {
-    protected $fillable = ['tipodoc', 'numdoc', 'docident','fecexp', 'exppais',
-'expdepa', 'expmuni', 'nombres', 'priapelli', 'segapellido',
-'genero', 'fecnacimiento', 'paisnac', 'depnac', 'muninac', 'estrato', 'id_cursos', 'id_muni_nac'];
+    protected $fillable = ['tipodoc', 'numdoc', 'docident','fecexp',
+'id_expmuni', 'nombres', 'priapelli', 'segapellido',
+'genero', 'fecnacimiento', 'estrato', 'id_cursos', 'id_muni_nac'];
     use HasFactory;
 }
 

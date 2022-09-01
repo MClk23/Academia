@@ -10,4 +10,8 @@ class Curso extends Model
     //añadienod permiso para manipular campos de la tabla
     protected $fillable = ['nombre', 'descripcion', 'imagen', 'duracion'];
     use HasFactory;
+
+    public function subject(){
+        return $this->belongsToMany(Subject::class);
+    }
 }
