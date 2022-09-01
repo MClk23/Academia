@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('students', function (Blueprint $table) {
             $table->engine='InnoDB';
             $table->id();
-            $table->enum('id_doc', ['CC', 'TI', 'CE', 'PASS']);
+            $table->text('id_doc');
             $table->timestamps();
             $table->text('tipodoc');
             $table->integer('numdoc');
@@ -26,7 +26,7 @@ return new class extends Migration
             $table->string('nombres');
             $table->string('priapelli');
             $table->string('segapellido');
-            $table->enum('genero',['M','F','otros']);
+            $table->text('genero');
             $table->date('fecnacimiento');
             $table->integer('estrato');
             $table->unsignedBigInteger('id_cursos');
