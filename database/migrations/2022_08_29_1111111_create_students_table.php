@@ -14,10 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('students', function (Blueprint $table) {
-            $table->engine='InnoDB';
             $table->id();
-            $table->text('id_doc');
-            $table->timestamps();
             $table->text('tipodoc');
             $table->integer('numdoc');
             $table->text('docident');
@@ -28,9 +25,10 @@ return new class extends Migration
             $table->string('segapellido');
             $table->text('genero');
             $table->date('fecnacimiento');
+            $table->unsignedBigInteger('id_muni_nac');
             $table->integer('estrato');
             $table->unsignedBigInteger('id_cursos');
-            $table->unsignedBigInteger('id_muni_nac');
+            $table->timestamps();
 
             //llaves
             $table->foreign('id_expmuni')->references('id')->on('towns')->onDelete('cascade')->onUpdate('cascade');;

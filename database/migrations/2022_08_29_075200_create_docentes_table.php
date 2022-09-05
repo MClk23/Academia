@@ -23,9 +23,9 @@ return new class extends Migration
             $table->date('fecha');
             $table->text('imagen');
             $table->text('documento');
-            $table->unsignedBigInteger('id_materia');
+            $table->unsignedBigInteger('id_curso');
 
-            $table->foreign('id_materia')->references('id')->on('subjects')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_curso')->references('id')->on('cursos')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

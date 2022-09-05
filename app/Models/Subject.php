@@ -11,10 +11,10 @@ class Subject extends Model
     use HasFactory;
 
     public function docentes(){
-        return $this->belongsToMany(Docente::class);
+        return $this->belongsTo(Docente::class);
     }
 
     public function cursos(){
-        return $this->belongsToMany(Docente::class);
+        return $this->hasMany(Curso::class);
     }
 }

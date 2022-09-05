@@ -23,8 +23,6 @@ class storeCursoRequest extends FormRequest
     public function rules()
     {
         return [
-            'nombre'=>'required|size:',
-            'descripcion'=>'required|size:15',
             'duracion'=>'integer|min:1',
             'image'=>'mimetypes:mp4'
         ];

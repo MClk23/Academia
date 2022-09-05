@@ -65,9 +65,9 @@
               </div>
               <div class="form-group">
                 <label for="exampleFormControlSelect1">Municipio donde fue expedido</label>
-                <select class="form-control" name="expmuni" id="exampleFormControlSelect1">
+                <select class="form-control" name="id_expmuni" id="exampleFormControlSelect1">
                     @foreach ($towns as $tow )
-                    <option value="">{{$tow->nombre}}</option>
+                    <option value="{{$tow->id}}">{{$tow->nombre}}</option>
                     @endforeach
                 </select>
               </div>
@@ -121,9 +121,9 @@
         </div>
         <div class="form-group">
             <label for="exampleFormControlSelect1">Municipio de nacimiento</label>
-            <select class="form-control" name="muninac" id="exampleFormControlSelect1">
+            <select class="form-control" name="id_muni_nac" id="exampleFormControlSelect1">
                 @foreach ($towns as $tow )
-                    <option value="">{{$tow->nombre}}</option>
+                    <option value="{{$tow->id}}">{{$tow->nombre}}</option>
                  @endforeach
             </select>
         </div>
@@ -142,7 +142,7 @@
         </div>
         <div class="form-group">
             <label for="exampleFormControlSelect1">Cursos</label>
-            <select class="form-control" name="id_curso" id="exampleFormControlSelect1">
+            <select class="form-control" name="id_cursos" id="exampleFormControlSelect1">
                 <option>Seleccionar</option>
                 @foreach ($cursito as $grado)
                     <option value="{{$grado->id}}">{{$grado->nombre}}</option>

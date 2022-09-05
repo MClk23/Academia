@@ -53,21 +53,24 @@ class StudentController extends Controller
     public function store(storeStudentRequest $request)
     {
         $studentsito = new Student();
-        $studentsito->tipodoc = $request ->input('tipodoc');
-        $studentsito->numdoc = $request -> input('numdoc');
+        // $studentsito->tipodoc = $request ->input('tipodoc');
+        // $studentsito->numdoc = $request -> input('numdoc');
+        $studentsito->fill($request->except('docident'));
+
         if($request->hasFile('docident')){
             $studentsito->docident = $request->file('docident')->store('public/student/docident/');
         }
-        $studentsito->id_expmuni= $request-> input('id_expmuni');
-        $studentsito->fecexp= $request-> input('fecexp');
-        $studentsito->nombres= $request-> input('nombres');
-        $studentsito->priapelli= $request-> input('priapelli');
-        $studentsito->segapellido= $request-> input('segapellido');
-        $studentsito->genero= $request-> input('genero');
-        $studentsito->fecnacimiento= $request-> input('fecnacimiento');
-        $studentsito->id_muni_nac= $request-> input('id_muni_nac');
-        $studentsito->estrato= $request-> input('estrato');
-        $studentsito->id_cursos= $request-> input('id_cursos');
+        // $studentsito->id_expmuni= $request-> input('id_expmuni');
+        // $studentsito->fecexp= $request-> input('fecexp');
+        // $studentsito->nombres= $request-> input('nombres');
+        // $studentsito->priapelli= $request-> input('priapelli');
+        // $studentsito->segapellido= $request-> input('segapellido');
+        // $studentsito->genero= $request-> input('genero');
+        // $studentsito->fecnacimiento= $request-> input('fecnacimiento');
+        // $studentsito->id_muni_nac= $request-> input('id_muni_nac');
+        // $studentsito->estrato= $request-> input('estrato');
+        // $studentsito->id_cursos= $request-> input('id_cursos');
+
         $studentsito->save();
         return view('student.add');
 
@@ -84,7 +87,25 @@ class StudentController extends Controller
     public function show($id)
     {
         $studentsito= Student::find($id);
-        return view('student.show', compact('studentsito'));
+        $query1 = Town::join(
+            'students', 'students.id_expmuni', 'towns.id'
+        )
+        ->join('states', 'states.id', 'towns.id_depa')
+        ->join('countries', 'countries.id', 'states.id_pais')
+        ->where('students.id', $id)
+        ->select('towns.nombre as nomMuni', 'states.nombre as NomDep', 'countries.nombre as nomPais')
+        ->get();
+
+        $query2 = Town::join(
+            'students', 'students.id_muni_nac', 'towns.id'
+        )
+        ->join('states', 'states.id', 'towns.id_depa')
+        ->join('countries', 'countries.id', 'states.id_pais')
+        ->where('students.id', $id)
+        ->select('towns.nombre as nomMuni', 'states.nombre as NomDep', 'countries.nombre as nomPais')
+        ->get();
+
+        return view('student.show', compact('query1','query2', 'studentsito'));
     }
 
     /**
@@ -95,8 +116,44 @@ class StudentController extends Controller
      */
     public function edit($id)
     {
+        $cursito = Curso::all();
+        $countries = Country::all();
+        $states = State::all();
+        $towns = Town::();
         $studentsito = Student::find($id);
-        return view('student.edit', compact('studentsito'));
+        //     'students', 'students.id_expmuni', 'towns.id'
+        // )
+        // ->join(
+        //     'states', 'states.id', 'towns.id_depa'
+        // )
+        // ->join(
+        //     'countries', 'countries.id', 'states.id_pais'
+        // )
+        // ->where('students.id', $id)
+        // ->select('towns.nombre as nomMuni', 'states.nombre as NomDep', 'countries.nombre as nomPais')
+        // ->get();
+
+        // $query2 = Town::join(
+        //     'students', 'students.id_muni_nac', 'towns.id'
+        // )
+        // ->join(
+        //     'states', 'states.id', 'towns.id_depa'
+        // )
+        // ->join(
+        //     'countries', 'countries.id', 'states.id_pais'
+        // )
+        // ->where('students.id', $id)
+        // ->select('towns.nombre as  birthMuni', 'states.nombre as birthDep', 'countries.nombre as birthPais')
+        // ->get();
+        // $query3 = Curso::join(
+        //     'students', 'students.id_course', 'id_courses'
+        // )
+        // ->where('students.id', $id)
+        // ->select('cursos.nombre as nombre')
+        // ->get();
+
+        // return view('student.edit', compact('studentsito', 'cursito', 'countries', 'states', 'towns'));
+        return $studentsito->nombres;
     }
 
     /**

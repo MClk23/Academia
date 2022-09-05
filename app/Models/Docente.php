@@ -8,10 +8,10 @@ use PhpParser\Node\Expr\FuncCall;
 
 class Docente extends Model
 {
-    protected $fillable = ['nombre', 'apellido', 'titulouniv', 'edad', 'fecha','imagen','documento'];
+    protected $fillable = ['nombre', 'apellido', 'titulouniv', 'edad', 'fecha','imagen','documento', 'id_curso'];
     use HasFactory;
 
     public function subjects(){
-        return $this->belongsToMany(Subject::class);
+        return $this->belongsTo(Subject::class);
     }
 }

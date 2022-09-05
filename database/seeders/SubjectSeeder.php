@@ -16,8 +16,28 @@ class SubjectSeeder extends Seeder
     public function run()
     {
         Subject::create([
-        'id'=>'1',
-        'nombre'=>''
+        'id'=> 1,
+        'nombre'=>'Matemáticas',
+        'inthoraria'=> 6
         ]);
+
+        Subject::create([
+        'id'=> 2,
+        'nombre'=>'Español',
+        'inthoraria'=> 4
+        ]);
+
+        Subject::create([
+        'id'=> 3,
+        'nombre'=>'Python',
+        'inthoraria'=> 10
+        ]);
+
+        Subject::create([
+        'id'=> 4,
+        'nombre'=>'Inglés',
+        'inthoraria'=> 6
+        ]);
+
     }
 }
