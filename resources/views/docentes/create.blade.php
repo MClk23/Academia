@@ -49,6 +49,16 @@
             <br>
             <input id="imagen" class="form-control" type="file" name="imagen">
         </div>
+        <div class="form-group">
+            <label for="exampleFormControlSelect1">Cursos</label>
+            <select class="form-control" name="id_cursos" id="exampleFormControlSelect1">
+                <option>Seleccionar</option>
+                @foreach ($cursito as $grado)
+                    <option value="{{$grado->id}}">{{$grado->nombre}}</option>
+
+                @endforeach
+            </select>
+        </div>
         <button class="btn btn-info" type="submit">Crear Docente</button>
     </div>
 </form>

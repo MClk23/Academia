@@ -73,7 +73,7 @@
               </div>
               <div class="form-group">
                 <label for="exampleFormControlInput1">Fecha de expedición</label>
-                <input type="date" class="form-control" name="fecexp" id="exampleFormControlInput1"  value="<?php date('Y-m-d') ?>">
+                <input type="date" class="form-control" name="fecexp" id="exampleFormControlInput1">
               </div>
       </div>
       <div class="col-sm">

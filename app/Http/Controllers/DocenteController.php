@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\storeDocenteRequest;
+use App\Models\Curso;
 use App\Models\Docente;
 use Illuminate\Http\Request;
 
@@ -26,7 +27,8 @@ class DocenteController extends Controller
      */
     public function create()
     {
-        return view ('docentes.create');
+        $cursito = Curso::all();
+        return view ('docentes.create', compact('cursito'));
     }
 
     /**

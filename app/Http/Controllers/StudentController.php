@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\storeStudentRequest;
+use App\Http\Requests\updateStudentRequest;
 use App\Models\Country;
 use App\Models\Curso;
 use App\Models\State;
@@ -119,41 +120,43 @@ class StudentController extends Controller
         $cursito = Curso::all();
         $countries = Country::all();
         $states = State::all();
-        $towns = Town::();
+        $towns = Town::all();
         $studentsito = Student::find($id);
-        //     'students', 'students.id_expmuni', 'towns.id'
-        // )
-        // ->join(
-        //     'states', 'states.id', 'towns.id_depa'
-        // )
-        // ->join(
-        //     'countries', 'countries.id', 'states.id_pais'
-        // )
-        // ->where('students.id', $id)
-        // ->select('towns.nombre as nomMuni', 'states.nombre as NomDep', 'countries.nombre as nomPais')
-        // ->get();
 
-        // $query2 = Town::join(
-        //     'students', 'students.id_muni_nac', 'towns.id'
-        // )
-        // ->join(
-        //     'states', 'states.id', 'towns.id_depa'
-        // )
-        // ->join(
-        //     'countries', 'countries.id', 'states.id_pais'
-        // )
-        // ->where('students.id', $id)
-        // ->select('towns.nombre as  birthMuni', 'states.nombre as birthDep', 'countries.nombre as birthPais')
-        // ->get();
-        // $query3 = Curso::join(
-        //     'students', 'students.id_course', 'id_courses'
-        // )
-        // ->where('students.id', $id)
-        // ->select('cursos.nombre as nombre')
-        // ->get();
+        $query1 = Town::join(
+            'students', 'students.id_expmuni', 'towns.id'
+        )
+        ->join(
+            'states', 'states.id', 'towns.id_depa'
+        )
+        ->join(
+            'countries', 'countries.id', 'states.id_pais'
+        )
+        ->where('students.id', $id)
+        ->select('towns.nombre as nomMuni', 'states.nombre as NomDep', 'countries.nombre as nomPais')
+        ->get();
 
-        // return view('student.edit', compact('studentsito', 'cursito', 'countries', 'states', 'towns'));
-        return $studentsito->nombres;
+        $query2 = Town::join(
+            'students', 'students.id_muni_nac', 'towns.id'
+        )
+        ->join(
+            'states', 'states.id', 'towns.id_depa'
+        )
+        ->join(
+            'countries', 'countries.id', 'states.id_pais'
+        )
+        ->where('students.id', $id)
+        ->select('towns.nombre as  birthMuni', 'states.nombre as birthDep', 'countries.nombre as birthPais')
+        ->get();
+        $query3 = Curso::join(
+            'students', 'students.id_cursos', 'id_cursos'
+        )
+        ->where('students.id', $id)
+        ->select('cursos.nombre as nombre')
+        ->get();
+
+        return view('student.edit', compact('studentsito', 'cursito', 'countries', 'states', 'towns'));
+
     }
 
     /**
@@ -163,13 +166,16 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(updateStudentRequest $request, $id)
     {
-        $studentsito = Student::all();
+        $studentsito = Student::find($id);
+        $cursito = Curso::find($id);
         $studentsito->fill($request->except('docident'));
         if($request->hasFile('docident')){
-            $studentsito->docident = $request->file('docident')->store('public/student/docident');
+            $studentsito->docident = $request->file('docident')->store('public/student');
         }
+        $studentsito->save();
+        return view('student.edit2', compact('cursito'));
     }
 
     /**

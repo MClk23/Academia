@@ -3,9 +3,21 @@
 @section('titulo', 'Editar Docentes')
 
 @section('contenido')
-<form action="/student/{{$studentsito}}" method="POST" enctype="multipart/form-data">
+<form action="/student/{{$studentsito->id}}" method="POST" enctype="multipart/form-data">
     @method('PUT')
     @csrf
+    @csrf
+
+    @if ($errors->any())
+    @foreach ($errors->all() as $alerta)
+    <div class="alert alert-danger" role="alert">
+        <ul>
+        <li>{{$alerta}}</li>
+        </ul>
+    </div>
+    @endforeach
+
+    @endif
     <br>
 
 <body style="background-color: rgb(236, 233, 233)">
@@ -16,7 +28,7 @@
           <div class="col-sm">
             <h2>Actualizar Documentos de identidad del estudiante</h2>
             <div class="form-group">
-                <label for="exampleFormControlSelect1">Tipo de documento</label>
+                <label for="exampleFormControlSelect1" >Tipo de documento</label>
                 <select class="form-control" name="tipodoc" id="exampleFormControlSelect1">
                   <option>Cédula de ciudadanía</option>
                   <option>Tarjeta de identidad</option>
@@ -26,14 +38,14 @@
               </div>
                 <div class="form-group">
                   <label for="exampleFormControlInput1">No. de documento</label>
-                  <input type="text" class="form-control" name="numdoc" id="exampleFormControlInput1" placeholder="10101010">
+                  <input type="text" class="form-control" name="numdoc" id="exampleFormControlInput1" placeholder="10101010" value="{{$studentsito ->numdoc}}">
                 </div>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                       <span class="input-group-text">Cargar</span>
                     </div>
                     <div class="custom-file">
-                      <input type="file" class="custom-file-input" name="docident" id="inputGroupFile01">
+                      <input type="file" class="custom-file-input" name="docident" id="inputGroupFile01" value="{{$studentsito->docident}}">
                       <label class="custom-file-label" for="inputGroupFile01">Cargue Doc. de identificación</label>
 
                     </div>
@@ -65,22 +77,22 @@
                   </div>
                   <div class="form-group">
                     <label for="exampleFormControlInput1">Fecha de expedición</label>
-                    <input type="date" class="form-control" name="fecexp" id="exampleFormControlInput1"  value="<?php date('Y-m-d') ?>">
+                    <input type="date" class="form-control" name="fecexp" id="exampleFormControlInput1"  value="{{$studentsito->fecexp}}">
                   </div>
           </div>
           <div class="col-sm">
             <h2>Actualizar Datos de identificación del estudiante</h2>
             <div class="form-group">
                 <label for="exampleFormControlInput1">Nombres</label>
-                <input type="text" class="form-control" name="nombres" id="exampleFormControlInput1" >
+                <input type="text" class="form-control" name="nombres" id="exampleFormControlInput1" value="{{$studentsito->nombres}}">
             </div>
             <div class="form-group">
                 <label for="exampleFormControlInput1">Primer apellido</label>
-                <input type="text" class="form-control" name="priapelli" id="exampleFormControlInput1" >
+                <input type="text" class="form-control" name="priapelli" id="exampleFormControlInput1" value="{{$studentsito->priapelli}}">
             </div>
             <div class="form-group">
                 <label for="exampleFormControlInput1">Segundo apellido</label>
-                <input type="text" class="form-control" name="segapellido" id="exampleFormControlInput1" >
+                <input type="text" class="form-control" name="segapellido" id="exampleFormControlInput1" value="{{$studentsito->segapellido}}">
             </div>
             <div class="form-group">
                 <label for="exampleFormControlSelect1">Género</label>
@@ -92,7 +104,7 @@
             </div>
             <div class="form-group">
                 <label for="exampleFormControlInput1">Fecha de nacimiento</label>
-                <input type="date" class="form-control" name="fecnacimiento" id="exampleFormControlInput1" >
+                <input type="date" class="form-control" name="fecnacimiento" id="exampleFormControlInput1" value="{{$studentsito->fecnacimiento}}">
             </div>
             <div class="form-group">
                 <label for="exampleFormControlSelect1">País de nacimiento</label>
@@ -142,10 +154,10 @@
                     @endforeach
                 </select>
             </div>
-            <button type="button" class="btn btn-secondary">
-                <a href="/student/{{$studentsito->id}}" class="btn btn-success">regresar</a>
+            <button type="button" class="btn btn-success">
+                <a href="/student/{{$studentsito->id}}" class="" style="color: white">Regresar</a>
             </button>
-            <button type="submit" class="btn btn-success">Continuar</button>
+            <button type="submit" class="btn btn-success" >Actualizar</button>
           </div>
         </div>
     </div>

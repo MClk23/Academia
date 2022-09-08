@@ -4,6 +4,8 @@
 
 @section('contenido')
 
-<p clas="text-center"><b>La información del estudiante se ha eliminado exitosamente</b></p>
+<div class="alert alert-success" role="alert">
+    Eliminado Exitosamente
+</div>
 
 @endsection
