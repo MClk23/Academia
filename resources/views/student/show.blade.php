@@ -65,7 +65,7 @@
 </center>
 <br>
 <center>
-        <a href="/student/{{$studentsito->id}}/edit" class="btn btn-success">Editar Docente</a>
+        <a href="/student/{{$studentsito->id}}/edit" class="btn btn-success">Editar Estudiante</a>
         <br>
         <br>
         <form class="form-group" action="/student/{{$studentsito->id}}" method="POST">

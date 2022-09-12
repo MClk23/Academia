@@ -49,6 +49,7 @@ class DocenteController extends Controller
             $docentico->imagen = $request->file('imagen')->store('public/docentes');
             $docentico->documento = $request->file('documento')->store('public/docentes');
         }
+        $docentico->id_curso = $request->input('id_curso');
         $docentico->save();
         return view('docentes.guardado');
 
