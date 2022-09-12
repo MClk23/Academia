@@ -4,6 +4,9 @@
 
 @section('contenido')
 
-<p clas="text-center"><b>La información del estudiante se ha sido actualizada exitosamente</b></p>
+
+<div class="alert alert-info" role="alert">
+    La información del estudiante se ha sido actualizada exitosamente
+</div>
 
 @endsection

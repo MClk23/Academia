@@ -10,17 +10,25 @@
     <div class="row">
         @foreach ($cursito as $item)
                 <div class="col-sm">
+
                     <div class="card text-center m-3" style="width: 18rem;">
                         <img style="height: 150px" class="card-img-top" src="{{ Storage::url($item->imagen) }}
                         " alt="Card image cap">
+
                         <div class="card-body">
                             <h5 class="card-title">{{$item->nombre}}</h5>
                             <a href="/cursos/{{$item->id}}" class="btn btn-primary">Ver Detalle</a>
                         </div>
+
                     </div>
+
                 </div>{{--cierre de col--}}
         @endforeach
+        
     </div>{{--cierre de row--}}
     {{--La doble llave sirve par interpolar, es decir, sirve para trear una variable
         de otro lenguaje al lenguaje que se esta usndo actualmente--}}
+    <center>
+        <a href="/cursos/create" class="btn btn-success">Crear Curso</a>
+    </center>
 @endsection

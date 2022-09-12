@@ -17,11 +17,13 @@
         <br>
         <br>
 
-            <form class="form-group" action="/docentes/{{$docentico->id}}" method="POST">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="btn btn-danger">Eliminar</button>
-            </form>
+        <form class="form-group" action="/docentes/{{$docentico->id}}" method="POST">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="btn btn-danger">Eliminar</button>
+        </form>
+
     </div>
+    
 </div>
 @endsection
