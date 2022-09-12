@@ -24,7 +24,7 @@ class storeStudentRequest extends FormRequest
     public function rules()
     {
         return [
-            'numdoc' => 'required|integer',
+            'numdoc' => 'required:integer|max:10|unique:students',
             'docident' => 'required|mimes:pdf',
             'fecexp' => 'required:nullable|date',
             'nombres' => 'required|max:45',

@@ -12,7 +12,7 @@ class Curso extends Model
     use HasFactory;
 
     public function subject(){
-        return $this->hasMany(Subject::class);
+        return $this->belongsToMany(Subject::class);
     }
 
     public function student(){
