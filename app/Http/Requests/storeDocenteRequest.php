@@ -26,11 +26,10 @@ class storeDocenteRequest extends FormRequest
         return [
             'nombre'=>'required|max:20',
             'apellido'=>'required|max:20',
-            'titulouniv'=>'required|max:30',
+            'titulouniv'=>'required|max:60',
             'edad'=>'integer',
             'fecha'=>'nullable|date',
             'documento'=>'required|mimes:pdf',
-            'imagen'=>'required|mimes:jpg,png|max:5mb',
             'id_curso'=>'required'
         ];
     }

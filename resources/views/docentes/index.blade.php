@@ -12,7 +12,7 @@
                 <div class="col-sm">
 
                     <div class="card text-center m-3" style="width: 18rem;">
-                        <img style="height: 150px" class="card-img-top" src="{{ Storage::url($item->imagen) }}
+                        <img style="height: 200px" class="card-img-top" src="{{ Storage::url($item->imagen) }}
                         " alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title">{{$item->nombre}}</h5>
@@ -24,7 +24,7 @@
 
         @endforeach
     </div>
-    
+
     <center>
         <a href="/docentes/create" class="btn btn-success">Crear Docente</a>
     </center>
