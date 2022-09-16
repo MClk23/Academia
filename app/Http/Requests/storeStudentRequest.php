@@ -24,11 +24,12 @@ class storeStudentRequest extends FormRequest
     public function rules()
     {
         return [
-            'numdoc' => 'required:integer|max:10|unique:students',
+            'numdoc' => 'required:integer|max:11|unique:students',
             'docident' => 'required|mimes:pdf',
             'fecexp' => 'required:nullable|date',
             'nombres' => 'required|max:45',
-            'priapelli' => 'required:string|max:45',
+            'priapelli' => 'required|max:45',
+            'segapellido' => 'required|max:45',
             'fecnacimiento' => 'required:nullable|date',
         ];
     }

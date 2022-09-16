@@ -46,13 +46,10 @@ Route::get('/suma/{a}/{b}', function($a, $b){
 
 /*Menciono la clase y el metodo como un array, debo usar la palabra reservada class,
 el metodo va dentro de comilla simple*/
-Route::get('/rutamulti/{a}/{b}',[MiControlador::class,'multipli']);
 
-Route::get('/heladeria/{opc}', [HeladeriaController::class,'totalHelado']);
 
-Route::get('/precios/{opc}', [ControladorPrecios::class,'precio']);
 
-Route::get('/iva/{nom}/{val}', [ControladorPrecios::class,'getIVA'] );
+
 
 Route::resource('cursos', CursoController::class);
 
