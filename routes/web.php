@@ -57,10 +57,9 @@ Route::resource('docentes', DocenteController::class);
 
 Route::resource('student', StudentController::class);
 
-Route::resource('subject', SubjectController::class);
 
-Route::resource('country', CountryController::class);
 
-Route::resource('state', StatesController::class);
 
-Route::resource('town', TownController::class);
+
+
+
