@@ -3,10 +3,15 @@
 namespace Tests\Unit;
 
 use App\Models\Docente;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
+use Illuminate\Http\Response;
+
+use function PHPUnit\Framework\assertJson;
 
 class DocentesTest extends TestCase
 {
+    use RefreshDatabase;
     /**
      * A basic unit test example.
      *
@@ -33,6 +38,8 @@ class DocentesTest extends TestCase
         $docente1->apellido != $docente2->apellido);
     }
 
+
+
     public function test_save_docentes()
     {
         $respuesta = $this->post('/docentes', [
@@ -46,8 +53,24 @@ class DocentesTest extends TestCase
             'id_curso' => 2
 
     ]);
+        // $respuesta->assertJsonStructure(["nombre", "apellido", "titulouniv", "edad", "fecha", "imagen", "documento" , "id_curso"])
+        // ->assertJson(['nombre', 'apellido', 'titulouniv', 'edad', 'fecha', 'imagen', 'documento' , 'id_curso'])
+        // ->assertJson(201);
         return $respuesta->assertRedirect('/');
 
+    }
+
+    public function test_delete_docente()
+    {
+        $docentes = Docente::factory()->count(1)->make();
+
+        $docentes = Docente::first();
+
+        if($docentes){
+            $docentes->delete();
+        }
+
+        $this->assertTrue(true);
     }
 
 }

@@ -43,9 +43,28 @@ class CursosTest extends TestCase
             'nombre' => 'PHP Laravel',
             'descripcion' => 'Laravel basico',
             'duracion' => 50,
-            'imagen' => 'public/cursos/qFoG6ADod82EyHgjuqL45cjOUkttAJf28Hl52fZM.png'
+            'imagen' => 'imagen2.png'
+    ]);
+    $response->assertJsonStructure(['nombre', 'descripcion', 'duracion','imagen'])
+    ->assertJson(['nombre'=>'PHP Laravel'])
+    ->assertStatus(201);
+
+    $this->assertDatabaseHas('cursos', ['nombre' => 'PHP Laravel','descripcion' => 'Laravel basico', 'duracion' => 50, 'imagen' => 'imagen2.png'
     ]);
         return $response->assertRedirect('/');
+    }
+
+    public function test_delete_curso()
+    {
+        $curso = Curso::factory()->count(1)->make();
+
+        $curso = Curso::first();
+
+        if($curso){
+            $curso->delete();
+        }
+
+        $this->assertTrue(true);
     }
 
 }

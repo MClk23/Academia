@@ -3,11 +3,13 @@
 namespace Tests\Unit;
 
 use App\Models\Student;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 
 class StudentsTest extends TestCase
 {
+    use RefreshDatabase;
     /**
      * A basic unit test example.
      *
@@ -45,10 +47,23 @@ class StudentsTest extends TestCase
             'fecnacimiento' => '2002-02-21',
             'id_muni_nac' => 'Medellin',
             'estrato' => 1,
-            'id_curso' => 'Php'
+            'id_curso' => 2
 
     ]);
         return $respuesta->assertRedirect('/');
 
     }
+
+    public function test_delete_students(){
+        $students = Student::factory()->count(1)->make();
+
+        $students = Student::first();
+
+        if($students){
+            $students->delete();
+        }
+
+        $this->assertTrue(true);
+    }
+
 }
