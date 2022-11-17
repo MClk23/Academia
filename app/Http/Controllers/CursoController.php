@@ -41,8 +41,26 @@ class CursoController extends Controller
      */
     public function store(storeCursoRequest $request)
     {
-        $cursos = Curso::create($request->all());
-        return response()->json($cursos, 201);
+        $cursito = new Curso();//Lo que hicimos fue crear una instancia de la clase Curso
+        $cursito->nombre = $request->input('nombre');
+        $cursito->descripcion = $request->input('descripcion');
+
+
+        if ($request->hasFile('imagen')){
+            $cursito->imagen = $request->file('imagen')->store('public/cursos');
+        }
+
+        $cursito->duracion = $request->input('duracion');
+        // $cursito->duracion = $request->input('duracion');
+        $cursito->save();//Con el comando save se registra la info en la db
+        return view('cursos.guardado');
+
+            //Para que funcionen los test son necesarias las 3 líneas de código siguiente
+            // $cursito->fill($request->except('imagen'));
+            // $cursos = Curso::create($request->all());
+            // return response()->json($cursos, 201);
+
+
         /*
         //implementamos validaciones
         $validacionDatos = $request->validate([
@@ -51,21 +69,9 @@ class CursoController extends Controller
         ]);
         */
 
-        // if($request->hasFile('imagen')){
-        //     $archivo = $request->file('imagen');
-        // }
-        // //Se devuelve la peticion hecha al servidor
-        // //return $request->all();
-        // $cursito = new Curso();//Lo que hicimos fue crear una instancia de la clase Curso
-        // $cursito->nombre = $request->input('nombre');
-        // $cursito->descripcion = $request->input('descripcion');
-        // if ($request->hasFile('imagen')){
-        //     $cursito->imagen = $request->file('imagen')->store('public/cursos');
-        // }
-        // $cursito->duracion = $request->input('duracion');
-        // $cursito->save();//Con el comando save se registra la info en la db
-        // return view('cursos.guardado');
-        // //return $request->input('nombre');
+        //Se devuelve la peticion hecha al servidor
+        //return $request->all();
+
 
 
     }

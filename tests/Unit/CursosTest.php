@@ -43,7 +43,7 @@ class CursosTest extends TestCase
             'nombre' => 'PHP Laravel',
             'descripcion' => 'Laravel basico',
             'duracion' => 50,
-            'imagen' => 'imagen2.png'
+            'imagen' => 'public/cursos/8iNAE8Ghs8JQxnqDiFehMXuCBSQ3Y5u4oo3JK8rk.png'
     ]);
     $response->assertJsonStructure(['nombre', 'descripcion', 'duracion','imagen'])
     ->assertJson(['nombre'=>'PHP Laravel'])
