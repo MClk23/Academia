@@ -46,9 +46,10 @@
         </div>
 
         <button class="btn btn-info" type="submit">Crear</button>
+        
 
     </div>
-    
+
 </form>
 
 @endsection

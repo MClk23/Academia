@@ -8,4 +8,7 @@
     Guardado exitosamente
 </div>
 
+<a href="/cursos" class="btn btn-info">Volver al listado de Cursos</a>
+
+
 @endsection

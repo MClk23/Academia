@@ -24,11 +24,10 @@
 
                 </div>{{--cierre de col--}}
         @endforeach
-        
+
     </div>{{--cierre de row--}}
     {{--La doble llave sirve par interpolar, es decir, sirve para trear una variable
         de otro lenguaje al lenguaje que se esta usndo actualmente--}}
-    <center>
-        <a href="/cursos/create" class="btn btn-success">Crear Curso</a>
-    </center>
+
+        <a href="/cursos/create" class="btn btn-info">Crear Curso</a>
 @endsection

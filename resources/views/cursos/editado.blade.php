@@ -7,5 +7,6 @@
 <div class="alert alert-info" role="alert">
     Editado exitosamente
 </div>
+c
 
 @endsection
