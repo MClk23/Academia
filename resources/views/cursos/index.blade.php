@@ -11,8 +11,8 @@
         @foreach ($cursito as $item)
                 <div class="col-sm">
 
-                    <div class="card text-center m-3" style="width: 18rem;">
-                        <img style="height: 150px" class="card-img-top" src="{{ Storage::url($item->imagen) }}
+                    <div class="card text-center m-3" style="width: 15rem;">
+                        <img style="height: 170px" class="card-img-top" src="{{ Storage::url($item->imagen) }}
                         " alt="Card image cap">
 
                         <div class="card-body">

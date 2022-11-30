@@ -51,9 +51,10 @@
         </div>
 
         <button class="btn btn-info" type="submit">Actualizar Docente</button>
+        
 
     </div>
-    
+
 </form>
 
 @endsection

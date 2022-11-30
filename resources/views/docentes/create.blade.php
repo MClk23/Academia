@@ -69,9 +69,10 @@
         </div>
 
         <button class="btn btn-info" type="submit">Crear Docente</button>
+        <a href="/docentes" class="btn btn-danger">Volver a la lista de docentes</a>
 
     </div>
-    
+
 </form>
 
 @endsection

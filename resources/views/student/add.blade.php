@@ -9,5 +9,6 @@
     <p clas="text-center"><b>La información del estudiante se ha agregado exitosamente</b></p>
 
 </div>
+<a href="/student" class="btn btn-success">Volver a la lista de estudiantes</a>
 
 @endsection

@@ -170,7 +170,7 @@
                     </select>
                 </div>
 
-                <button type="button" class="btn btn-secondary">Regresar</button>
+                <a href="/student" class="btn btn-danger">Regresar</a>
                 <button type="submit" class="btn btn-success">Continuar</button>
             </div>
         </div>

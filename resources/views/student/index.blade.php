@@ -10,7 +10,7 @@
         @foreach ($studentsito as $item)
 
                 <div class="col-sm">
-                    
+
                     <div class="card text-center m-3" style="width: 18rem;">
                         <iframe src="{{Storage::url($item->docident)}}" width="300px" height="300px"></iframe>
 

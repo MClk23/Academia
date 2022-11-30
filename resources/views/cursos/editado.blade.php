@@ -7,6 +7,6 @@
 <div class="alert alert-info" role="alert">
     Editado exitosamente
 </div>
-c
+<a href="/cursos" class="btn btn-info">Volver al listado de Cursos</a>
 
 @endsection
