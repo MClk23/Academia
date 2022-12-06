@@ -15,7 +15,9 @@
                         <iframe src="{{Storage::url($item->docident)}}" width="300px" height="300px"></iframe>
 
                         <div class="card-body">
-                            <h5 class="card-title">{{$item->nombres}}</h5>
+                            <h5 class="card-title">Nombre: {{$item->nombres}}</h5>
+                            <h5 class="card-title">Apellidos: {{$item->priapelli}} {{$item->segapellido}}</h5>
+                            <h5 class="card-title">{{$item->grado}}</h5>
                             <a href="/student/{{$item->id}}" class="btn btn-primary">Ver Detalles del estudiante</a>
                         </div>
 
