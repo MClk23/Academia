@@ -7,15 +7,15 @@
     </head>
     <body>
 
-        <nav class="navbar navbar-expand-lg navbar-dark bg-secondary fixed-top">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
 
             <a class="navbar-brand" href='http://127.0.0.1:8000/'>
-                <img src={{ asset('Aeternum.logo.png') }} alt="" height="80" width="100">
+                <img src={{ asset('Aeternum.logo.png') }} alt="" height="80" width="120">
             </a>
 
-            {{-- <button class="navbar-toggler" data-target="#my-nav" data-toggle="collapse" aria-controls="my-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" data-target="#my-nav" data-toggle="collapse" aria-controls="my-nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
-            </button> --}}
+            </button>
 
             <div id="my-nav" class="collapse navbar-collapse">
                 <ul class="navbar-nav mr-auto">

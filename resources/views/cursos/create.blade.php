@@ -39,12 +39,22 @@
             <input id="duracion" class="form-control" type="text" name="duracion">
         </div>
 
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Cargar</span>
+            </div>
 
-        <div class="form-group">
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" name="imagen" id="inputGroupFile01" >
+                <label class="custom-file-label" for="imagen">Cargue la imagen del curso</label>
+            </div>
+        </div>
+
+        {{-- <div class="form-group">
             <label for="imagen"><h6>Cargue la Imagen del Curso</h6></label>
             <br>
             <input id="imagen" type="file" name="imagen">
-        </div>
+        </div> --}}
 
         <button class="btn btn-info" type="submit">Crear Curso</button>
         <a href="cursos" class="btn btn-danger">Volver a la lista de Cursos</a>
